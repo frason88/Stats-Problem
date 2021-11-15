@@ -1,0 +1,15 @@
+This problem was asked by Twitter.
+
+How would you improve product engagement on Twitter?
+
+
+I will define user engagement as the percentage of users who log in and use one Twitter feature per day.
+Then, explain which variables you think may be important in that metric. 
+This can be user characteristics like age, gender, and country or it can be related to their online behavior such as their device type, mobile vs web, session time.
+Based on what you chose, pick a model to predict the metric from the first using variables from the second. Emphasize why you picked that model. 
+For example, SVMs work well for high dimensionality, whereas tree-based classifiers are more interpretable. Assuming the model is trained and makes 
+good predictions, with features that make intuitive sense, you want to push features that will improve the desired metrics (while holding all else roughly equal). 
+These can be evaluated in a traditional A/B testing setup. Lastly, define the next steps and potential actions based on the results of the testing.
+
+
+
