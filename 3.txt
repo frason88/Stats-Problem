@@ -1,0 +1,29 @@
+This problem was asked by Twitter.
+
+Assume you are given the below tables for the session activity of users. 
+Write a query to assign ranks to users by the total session duration for the different session types they have had between a start date (2020-01-01) and an end date (2020-02-01).
+
+Sessions
+-------------------------
+column_name	   | type   |
+session_id	   |integer |
+user_id	       |integer |
+session_type	 |string  |
+duration	     |integer |
+start_time	   |datetime|
+------------------------|
+
+Solution:
+ First, we can do a subquery to get the total session duration by user and session type between the start and end date. 
+ Then, we can use RANK() to get the rank, where we make sure to partition by session type and then order by duration:
+ WITH user_duration AS (
+     SELECT user_id, session_type, SUM(duration) AS duration
+       FROM sessions
+       WHERE start_time >= '2020-01-01' AND start_time <= '2020-02-01'
+     GROUP BY 1, 2)
+     
+      SELECT user_id,
+           session_type,
+           RANK() OVER (partition by session_type ORDER BY duration DESC) AS rank
+           FROM user_duration
+
